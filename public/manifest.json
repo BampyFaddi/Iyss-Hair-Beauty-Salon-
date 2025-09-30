@@ -1,0 +1,27 @@
+{
+  "name": "Iryss Hair and Beauty",
+  "short_name": "Iryss Salon",
+  "description": "Premium hair salon and beauty spa in Nairobi. Expert hair styling, braids, nails, massage, facials & more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B4513",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["beauty", "lifestyle", "health"],
+  "lang": "en-KE",
+  "dir": "ltr"
+}
