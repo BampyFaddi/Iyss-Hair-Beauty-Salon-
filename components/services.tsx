@@ -5,7 +5,7 @@ import type React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Scissors, Sparkles, Hand, Droplet, Flower2, Heart, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
@@ -57,9 +57,17 @@ const services = [
 function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
   const Icon = service.icon
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % service.images.length)
@@ -113,7 +121,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
         />
 
         {/* Navigation Arrows - Show on hover for desktop, always show on mobile if multiple images */}
-        {service.images.length > 1 && (isHovered || window.innerWidth < 768) && (
+        {service.images.length > 1 && (isHovered || isMobile) && (
           <>
             <Button
               variant="ghost"
