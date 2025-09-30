@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import type React from "react"
 
@@ -57,7 +57,7 @@ const services = [
 function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
   const Icon = service.icon
